@@ -1,10 +1,19 @@
 /* FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
 /* COLORS */
+:root {
+  --blue: #007db9;
+}
 
 /* GLOBAL */
+body {
+  font-family: "Ubuntu", sans-serif;
+}
 .wrapper {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: auto;
-  border: 1px solid red;
+}
+h1 {
+  font-size: 40px;
 }

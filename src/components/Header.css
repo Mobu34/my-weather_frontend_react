@@ -1,0 +1,23 @@
+.Header {
+  height: 60px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.Header-container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3px var(--blue) solid;
+  padding: 10px;
+}
+.Header-logo-container {
+  display: flex;
+  align-items: center;
+}
+.Header-logo {
+  height: 50px;
+  margin-right: 10px;
+}
+.Header-input {
+  width: 100px;
+  height: 40px;
+}

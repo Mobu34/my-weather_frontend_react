@@ -1,9 +1,51 @@
 .Item {
-  height: 80px;
-  background-color: aqua;
+  /* height: 80px; */
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
+  position: relative;
+}
+.Item-time {
+  font-size: 12px;
+}
+.Item-city {
+  font-size: 20px;
+}
+.Item-weather-icon {
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  left: calc(80% / 2);
+  top: 10px;
+  overflow: hidden;
+}
+.Item-right-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Item-favorite-btn {
+  border: #fff 2px solid;
+  background-color: #007db9;
+  width: 200px;
+  padding: 10px 0;
+  border-radius: 30px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.Item-favorite-btn:hover {
+  background-color: #fff;
+  border: #007db9 2px solid;
+  color: #000;
+  transition: 0.5s;
+}
+.Item-star-icon {
+  margin-left: 5px;
+}
+.Item-temp {
+  font-size: 30px;
 }
