@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Main.css";
 import Item from "./Item";
 import { connect } from "react-redux";
 
 const Main = ({ favorites, data }) => {
+  const [showDetails, setShowDetails] = useState(null);
+
   return (
     <main className="Main">
-      <Item data={data} />
-      {/* {favorites && <h3>Mes villes en favoris</h3>} */}
+      <Item
+        data={data}
+        showDetails={showDetails}
+        setShowDetails={setShowDetails}
+      />
       {favorites.map((item) => {
-        return <Item key={item.id} data={item} isFavorite={true} />;
+        return (
+          <Item
+            key={item.id}
+            data={item}
+            isFavorite={true}
+            showDetails={showDetails}
+            setShowDetails={setShowDetails}
+          />
+        );
       })}
     </main>
   );

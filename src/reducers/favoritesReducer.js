@@ -2,7 +2,6 @@ const initialState = { favorites: [] };
 
 const manageFavorites = (state = initialState, action) => {
   let nextState;
-  console.log(action);
   switch (action.type) {
     case "ADD":
       nextState = {
