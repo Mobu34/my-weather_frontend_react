@@ -11,7 +11,7 @@ const Header = ({ textInput, setTextInput, searchCity }) => {
   };
 
   const handleChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setTextInput(e.target.value);
   };
 

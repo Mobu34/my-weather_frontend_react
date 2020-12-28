@@ -1,0 +1,12 @@
+.Details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.Details-hours-container {
+  display: flex;
+  overflow-y: scroll;
+}
+.Details-hours-container > div:not(:last-child) {
+  border-right: 1px solid #fff;
+}

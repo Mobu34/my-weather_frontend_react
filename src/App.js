@@ -20,18 +20,18 @@ const App = () => {
   const [textInput, setTextInput] = useState("");
 
   useEffect(() => {
-    console.log("useEffect");
+    // console.log("useEffect");
     navigator.geolocation.getCurrentPosition(({ coords }) => {
-      console.log(coords);
+      // console.log(coords);
       if (coords) {
         (async () => {
           try {
-            console.log("avant req");
+            // console.log("avant req");
             const response = await axios.get(
               `${API}/weather/currentposition?lat=${coords.latitude}&lon=${coords.longitude}`
             );
 
-            console.log(response);
+            // console.log(response);
 
             if (response.status === 200) {
               setWeatherCurrentPosition(response.data);
@@ -42,7 +42,7 @@ const App = () => {
           }
         })();
       } else {
-        console.log("else");
+        // console.log("else");
         setIsLoading(false);
       }
     });

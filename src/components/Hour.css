@@ -1,0 +1,18 @@
+.Hour {
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--blue);
+  color: #fff;
+}
+.Hour-weather-icon {
+  background-color: #fff;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}

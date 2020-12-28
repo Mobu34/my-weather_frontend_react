@@ -3,6 +3,7 @@ import "./Item.css";
 import moment from "moment";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Moment from "react-moment";
 
 import Details from "./Details";
 
@@ -17,7 +18,7 @@ const Item = ({
   const hours = Math.floor(data.dt / 60 / 60);
   const minutes = Math.floor(data.dt / 60) - hours * 60;
 
-  const [isDetailed, setIsDetailed] = useState(false);
+  // const [isDetailed, setIsDetailed] = useState(false);
 
   const handleClick = () => {
     if (showDetails === data.id) {
@@ -43,10 +44,7 @@ const Item = ({
     }
   };
 
-  console.log(data.name);
-  console.log(data.dt);
-  // console.log(new Date(data.dt * 1000));
-  console.log(moment(data.dt * 1000).format("LT"));
+  console.log(data);
 
   return (
     <>
@@ -55,6 +53,7 @@ const Item = ({
           <span className="Item-time">
             {/* {hours}:{minutes} */}
             {moment().format("LT")}
+            {/* <Moment unix>{data.dt + data.timezone}</Moment> */}
           </span>
           <h3 className="Item-city">{data.name}</h3>
         </div>

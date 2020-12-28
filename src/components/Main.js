@@ -29,7 +29,6 @@ const Main = ({ favorites, data }) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state.favorites);
   return {
     favorites: state.favorites,
   };
