@@ -17,7 +17,22 @@
   height: 50px;
   margin-right: 10px;
 }
+.Header-form {
+  /* background-color: teal; */
+  display: flex;
+  align-items: center;
+}
 .Header-input {
-  width: 100px;
-  height: 40px;
+  width: 150px;
+  border-radius: 15px;
+  height: 30px;
+  margin-right: 20px;
+  border: none;
+  border-bottom: 2px var(--blue) solid;
+  padding: 0 10px;
+  font-size: 16px;
+}
+.Header-search-icon {
+  cursor: pointer;
+  font-size: 24px;
 }

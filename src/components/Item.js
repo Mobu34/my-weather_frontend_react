@@ -33,9 +33,9 @@ const Item = ({
 
     let action;
     if (!isFavorite) {
-      action = { type: "ADD", value: data };
+      action = { type: "ADD", value: data.id };
     } else {
-      action = { type: "DELETE", value: data };
+      action = { type: "DELETE", value: data.id };
     }
     dispatch(action);
 
@@ -44,7 +44,8 @@ const Item = ({
     }
   };
 
-  console.log(data);
+  // console.log(data);
+  // 1609200572
 
   return (
     <>
@@ -52,7 +53,8 @@ const Item = ({
         <div className="Item-left-container">
           <span className="Item-time">
             {/* {hours}:{minutes} */}
-            {moment().format("LT")}
+            {/* {moment().format("LT")} */}
+            {moment.utc(data.dt * 1000).format("LT")}
             {/* <Moment unix>{data.dt + data.timezone}</Moment> */}
           </span>
           <h3 className="Item-city">{data.name}</h3>

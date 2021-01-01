@@ -9,6 +9,7 @@
 /* GLOBAL */
 body {
   font-family: "Ubuntu", sans-serif;
+  background-color: #f2faff;
 }
 .wrapper {
   max-width: 1200px;
@@ -16,4 +17,5 @@ body {
 }
 h1 {
   font-size: 40px;
+  font-weight: 800;
 }

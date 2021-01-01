@@ -8,6 +8,11 @@
   position: relative;
   cursor: pointer;
 }
+.Item:hover {
+  background-color: #ffe484;
+  /* opacity: 0.5; */
+  transition: 0.5s;
+}
 .Item-time {
   font-size: 12px;
 }

@@ -6,10 +6,9 @@ const Day = ({ item }) => {
   console.log(item);
   return (
     <div className="Day">
-      <span>{moment(item.dt * 1000).format("dddd")}</span>
-      <span>
-        {item.temp.min.toFixed(0)} / {item.temp.max.toFixed(0)}
-      </span>
+      <div>{moment(item.dt * 1000).format("dddd")}</div>
+      <div>Min : {item.temp.min.toFixed(0)}°C</div>
+      <div>Max : {item.temp.max.toFixed(0)}°C</div>
     </div>
   );
 };

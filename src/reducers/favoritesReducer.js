@@ -1,6 +1,7 @@
 const initialState = { favorites: [] };
 
 const manageFavorites = (state = initialState, action) => {
+  // console.log(action);
   let nextState;
   switch (action.type) {
     case "ADD":
@@ -12,7 +13,8 @@ const manageFavorites = (state = initialState, action) => {
 
     case "DELETE":
       for (let i = 0; i < state.favorites.length; i++) {
-        if (state.favorites[i].id === action.value.id) {
+        console.log(state.favorites[i]);
+        if (state.favorites[i] === action.value) {
           state.favorites.splice(i, 1);
           nextState = {
             ...state,

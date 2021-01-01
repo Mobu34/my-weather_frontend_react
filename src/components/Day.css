@@ -1,4 +1,10 @@
 .Day {
-  /* background-color: yellow; */
   padding: 10px;
+  /* border: red 1px solid; */
+  display: flex;
+  width: 50%;
+  /* justify-content: space-between; */
+}
+.Day > div {
+  flex: 1;
 }
