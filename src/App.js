@@ -18,6 +18,7 @@ const App = () => {
   const [weatherSearchCity, setWeatherSearchCity] = useState({});
   const [isSearch, setIsSearch] = useState(false);
   const [textInput, setTextInput] = useState("");
+  const [searchErrorMessage, setSearchErrorMessage] = useState("");
 
   useEffect(() => {
     // console.log("useEffect");
@@ -60,6 +61,7 @@ const App = () => {
       }
     } catch (err) {
       console.log(err);
+      setSearchErrorMessage("La ville est incorrect");
     }
   };
 
@@ -69,6 +71,8 @@ const App = () => {
         textInput={textInput}
         setTextInput={setTextInput}
         searchCity={searchCity}
+        searchErrorMessage={searchErrorMessage}
+        setSearchErrorMessage={setSearchErrorMessage}
       />
       {isLoading ? (
         <span>Chargement en cours ...</span>

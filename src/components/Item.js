@@ -14,6 +14,7 @@ const Item = ({
   setIsSearch,
   showDetails,
   setShowDetails,
+  setTextInput,
 }) => {
   const hours = Math.floor(data.dt / 60 / 60);
   const minutes = Math.floor(data.dt / 60) - hours * 60;
@@ -41,6 +42,10 @@ const Item = ({
 
     if (setIsSearch) {
       setIsSearch(false);
+    }
+
+    if (setTextInput) {
+      setTextInput("");
     }
   };
 

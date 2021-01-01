@@ -23,6 +23,7 @@ const SearchResult = ({ data, setIsSearch, setTextInput }) => {
         setIsSearch={setIsSearch}
         showDetails={showDetails}
         setShowDetails={setShowDetails}
+        setTextInput={setTextInput}
       />
     </div>
   );

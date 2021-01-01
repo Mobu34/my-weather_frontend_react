@@ -4,7 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import logo from "../assets/logo.png";
 
-const Header = ({ textInput, setTextInput, searchCity }) => {
+const Header = ({
+  textInput,
+  setTextInput,
+  searchCity,
+  searchErrorMessage,
+  setSearchErrorMessage,
+}) => {
   const [displayInput, setDisplayInput] = useState(false);
 
   const inputRef = useRef(null);
@@ -19,11 +25,16 @@ const Header = ({ textInput, setTextInput, searchCity }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    searchCity(textInput);
+    if (textInput.length > 0) {
+      searchCity(textInput);
+    }
   };
 
   const handleChange = (e) => {
     setTextInput(e.target.value);
+    if (searchErrorMessage !== "") {
+      setSearchErrorMessage("");
+    }
   };
 
   const handleClick = () => {
@@ -40,13 +51,18 @@ const Header = ({ textInput, setTextInput, searchCity }) => {
           </div>
           <form onSubmit={handleSubmit} className="Header-form">
             {displayInput && (
-              <input
-                className="Header-input"
-                type="text"
-                value={textInput}
-                onChange={handleChange}
-                ref={inputRef}
-              />
+              <div className="Header-input-container">
+                <input
+                  className="Header-input"
+                  type="text"
+                  value={textInput}
+                  onChange={handleChange}
+                  ref={inputRef}
+                />
+                <span className="Header-input-errormessage">
+                  {searchErrorMessage}
+                </span>
+              </div>
             )}
             <FontAwesomeIcon
               icon="search"
