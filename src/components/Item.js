@@ -20,10 +20,11 @@ const Item = ({
   const theme = useContext(ThemeContext);
 
   const handleClick = () => {
-    if (showDetails === data.id) {
+    // console.log(data.id);
+    if (showDetails === data.new_id) {
       setShowDetails(null);
     } else {
-      setShowDetails(data.id);
+      setShowDetails(data.new_id);
     }
   };
 
@@ -47,7 +48,14 @@ const Item = ({
     }
   };
 
-  console.log(new Date(data.dt * 1000 + data.timezone));
+  // console.log("showDetails =", showDetails);
+  console.log("showDetails =", showDetails);
+  console.log("id =", data.id);
+
+  // console.log("before =", data.id);
+  // console.log("after =", data.id);
+
+  // console.log(new Date(data.dt * 1000 + data.timezone));
 
   return (
     <>
@@ -85,7 +93,7 @@ const Item = ({
           <span className="Item-temp">{data.main.temp.toFixed(0)}°C</span>
         </div>
       </div>
-      {showDetails === data.id && <Details data={data} />}
+      {showDetails === data.new_id && <Details data={data} />}
     </>
   );
 };
