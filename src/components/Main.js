@@ -12,6 +12,8 @@ const Main = ({ favorites, data }) => {
   const [showDetails, setShowDetails] = useState(null);
   const [isCurrentFavorite, setIsCurrentFavorite] = useState(false);
 
+  console.log(data);
+
   const theme = useContext(ThemeContext);
 
   useEffect(() => {
@@ -51,12 +53,18 @@ const Main = ({ favorites, data }) => {
 
   return (
     <main className={theme.name === "night" ? "Main-night" : "Main-day"}>
-      <Item
-        data={data}
-        showDetails={showDetails}
-        setShowDetails={setShowDetails}
-        isFavorite={isCurrentFavorite}
-      />
+      {data.dt ? (
+        <Item
+          data={data}
+          showDetails={showDetails}
+          setShowDetails={setShowDetails}
+          isFavorite={isCurrentFavorite}
+        />
+      ) : (
+        <div className="Main-unknownposition">
+          Votre position n'est pas connu
+        </div>
+      )}
       {favorites.length > 0 &&
         (isLoading ? (
           <span>Chargement en cours ...</span>

@@ -4,3 +4,9 @@
 .Main-night > div:not(:last-child) {
   border-bottom: 1px solid #5bc6f7;
 }
+.Main-unknownposition {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

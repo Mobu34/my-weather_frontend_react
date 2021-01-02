@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "./App.css";
 import axios from "axios";
 import moment from "moment";
+import Loader from "react-loader-spinner";
 
 import Header from "./components/Header";
 import Main from "./components/Main";
@@ -28,40 +29,42 @@ const App = () => {
 
   useEffect(() => {
     // console.log("useEffect");
-    navigator.geolocation.getCurrentPosition(({ coords }) => {
-      // console.log(coords);
-      if (coords) {
-        (async () => {
-          try {
-            // console.log("avant req");
-            const response = await axios.get(
-              `${API}/weather/currentposition?lat=${coords.latitude}&lon=${coords.longitude}`
-            );
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) => {
+        if (coords) {
+          (async () => {
+            try {
+              // console.log("avant req");
+              const response = await axios.get(
+                `${API}/weather/currentposition?lat=${coords.latitude}&lon=${coords.longitude}`
+              );
 
-            console.log(response.data);
+              console.log(response.data);
 
-            if (response.status === 200) {
-              setWeatherCurrentPosition(response.data);
-              const currentTimestamp = moment().unix();
-              if (
-                currentTimestamp >= response.data.sys.sunrise &&
-                currentTimestamp <= response.data.sys.sunrise
-              ) {
-                setTheme(themeContext.day);
-              } else {
-                setTheme(themeContext.night);
+              if (response.status === 200) {
+                setWeatherCurrentPosition(response.data);
+                const currentTimestamp = moment().unix();
+                if (
+                  currentTimestamp >= response.data.sys.sunrise &&
+                  currentTimestamp <= response.data.sys.sunrise
+                ) {
+                  setTheme(themeContext.day);
+                } else {
+                  setTheme(themeContext.night);
+                }
+                setIsLoading(false);
               }
-              setIsLoading(false);
+            } catch (err) {
+              console.log(err);
             }
-          } catch (err) {
-            console.log(err);
-          }
-        })();
-      } else {
-        // console.log("else");
+          })();
+        }
+      },
+      () => {
+        setTheme(themeContext.day);
         setIsLoading(false);
       }
-    });
+    );
   }, []);
 
   const searchCity = async (city) => {
@@ -97,17 +100,17 @@ const App = () => {
           />
         )}
         {isLoading ? (
-          <span>Chargement en cours ...</span>
+          <div className="Loader-container">
+            <Loader type="Oval" color="#fff" />
+          </div>
         ) : isSearch ? (
-          <>
-            <div className="wrapper">
-              <SearchResult
-                data={weatherSearchCity}
-                setIsSearch={setIsSearch}
-                setTextInput={setTextInput}
-              />
-            </div>
-          </>
+          <div className="wrapper">
+            <SearchResult
+              data={weatherSearchCity}
+              setIsSearch={setIsSearch}
+              setTextInput={setTextInput}
+            />
+          </div>
         ) : (
           <div className="wrapper">
             <Main data={weatherCurrentPosition} />

@@ -3,12 +3,10 @@ import "./Item.css";
 import moment from "moment";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Moment from "react-moment";
 
 import ThemeContext from "../context/ThemeContext";
 
 import Details from "./Details";
-import Day from "./Day";
 
 const Item = ({
   dispatch,
@@ -19,14 +17,7 @@ const Item = ({
   setShowDetails,
   setTextInput,
 }) => {
-  const hours = Math.floor(data.dt / 60 / 60);
-  const minutes = Math.floor(data.dt / 60) - hours * 60;
-
-  console.log(ThemeContext);
   const theme = useContext(ThemeContext);
-  console.log(theme);
-
-  // const [isDetailed, setIsDetailed] = useState(false);
 
   const handleClick = () => {
     if (showDetails === data.id) {
@@ -56,8 +47,7 @@ const Item = ({
     }
   };
 
-  // console.log(data);
-  // 1609200572
+  console.log(new Date(data.dt * 1000 + data.timezone));
 
   return (
     <>
@@ -66,7 +56,7 @@ const Item = ({
           <span className="Item-time">
             {/* {hours}:{minutes} */}
             {/* {moment().format("LT")} */}
-            {moment.utc(data.dt * 1000).format("LT")}
+            {moment(data.dt + data.timezone).format("LT")}
             {/* <Moment unix>{data.dt + data.timezone}</Moment> */}
           </span>
           <h3 className="Item-city">{data.name}</h3>
@@ -77,7 +67,6 @@ const Item = ({
           alt=""
         />
         <div className="Item-right-container">
-          {/* {!location && <div>Add Favorites</div>} */}
           <div
             className={`Item-favorite-btn ${
               theme.name === "night"
@@ -85,12 +74,11 @@ const Item = ({
                 : "Item-favorite-btn-day"
             }`}
             onClick={handleFavorite}
-            // style={{ backgroundColor: theme.btnBackgroundColor }}
           >
             {isFavorite ? "Supprimer des favoris" : "Ajouter en favoris"}
             <FontAwesomeIcon
               icon="star"
-              color={isFavorite ? "#FFCC04" : "gray"}
+              color={isFavorite ? "#FFCC04" : "#c9c9c9"}
               className="Item-star-icon"
             />
           </div>
