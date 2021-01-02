@@ -45,9 +45,10 @@ const App = () => {
               if (response.status === 200) {
                 setWeatherCurrentPosition(response.data);
                 const currentTimestamp = moment().unix();
+
                 if (
                   currentTimestamp >= response.data.sys.sunrise &&
-                  currentTimestamp <= response.data.sys.sunrise
+                  currentTimestamp <= response.data.sys.sunset
                 ) {
                   setTheme(themeContext.day);
                 } else {
