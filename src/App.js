@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./App.css";
 import axios from "axios";
+import moment from "moment";
 
 import Header from "./components/Header";
 import Main from "./components/Main";
 import SearchResult from "./components/SearchResult";
+import ThemeContext from "./context/ThemeContext";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch, faTimes, faStar } from "@fortawesome/free-solid-svg-icons";
@@ -13,12 +15,16 @@ library.add(faSearch, faTimes, faStar);
 const App = () => {
   const API = "http://localhost:3001";
 
+  const themeContext = useContext(ThemeContext);
+  // console.log(themeContext);
+
   const [isLoading, setIsLoading] = useState(true);
   const [weatherCurrentPosition, setWeatherCurrentPosition] = useState({});
   const [weatherSearchCity, setWeatherSearchCity] = useState({});
   const [isSearch, setIsSearch] = useState(false);
   const [textInput, setTextInput] = useState("");
   const [searchErrorMessage, setSearchErrorMessage] = useState("");
+  const [theme, setTheme] = useState({});
 
   useEffect(() => {
     // console.log("useEffect");
@@ -32,10 +38,19 @@ const App = () => {
               `${API}/weather/currentposition?lat=${coords.latitude}&lon=${coords.longitude}`
             );
 
-            // console.log(response);
+            console.log(response.data);
 
             if (response.status === 200) {
               setWeatherCurrentPosition(response.data);
+              const currentTimestamp = moment().unix();
+              if (
+                currentTimestamp >= response.data.sys.sunrise &&
+                currentTimestamp <= response.data.sys.sunrise
+              ) {
+                setTheme(themeContext.day);
+              } else {
+                setTheme(themeContext.night);
+              }
               setIsLoading(false);
             }
           } catch (err) {
@@ -65,33 +80,41 @@ const App = () => {
     }
   };
 
+  // console.log(moment().unix());
+
   return (
-    <div className="App">
-      <Header
-        textInput={textInput}
-        setTextInput={setTextInput}
-        searchCity={searchCity}
-        searchErrorMessage={searchErrorMessage}
-        setSearchErrorMessage={setSearchErrorMessage}
-      />
-      {isLoading ? (
-        <span>Chargement en cours ...</span>
-      ) : isSearch ? (
-        <>
+    <ThemeContext.Provider value={theme}>
+      <div
+        className={`App ${theme.name === "night" ? "App-night" : "App-day"}`}
+      >
+        {theme.name && (
+          <Header
+            textInput={textInput}
+            setTextInput={setTextInput}
+            searchCity={searchCity}
+            searchErrorMessage={searchErrorMessage}
+            setSearchErrorMessage={setSearchErrorMessage}
+          />
+        )}
+        {isLoading ? (
+          <span>Chargement en cours ...</span>
+        ) : isSearch ? (
+          <>
+            <div className="wrapper">
+              <SearchResult
+                data={weatherSearchCity}
+                setIsSearch={setIsSearch}
+                setTextInput={setTextInput}
+              />
+            </div>
+          </>
+        ) : (
           <div className="wrapper">
-            <SearchResult
-              data={weatherSearchCity}
-              setIsSearch={setIsSearch}
-              setTextInput={setTextInput}
-            />
+            <Main data={weatherCurrentPosition} />
           </div>
-        </>
-      ) : (
-        <div className="wrapper">
-          <Main data={weatherCurrentPosition} />
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </ThemeContext.Provider>
   );
 };
 

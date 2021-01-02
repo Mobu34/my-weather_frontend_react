@@ -9,7 +9,8 @@
 /* GLOBAL */
 body {
   font-family: "Ubuntu", sans-serif;
-  background-color: #f2faff;
+  /* background-color: #f2faff; */
+  height: 100%;
 }
 .wrapper {
   max-width: 1200px;
@@ -18,4 +19,20 @@ body {
 h1 {
   font-size: 40px;
   font-weight: 800;
+}
+
+/* APP */
+.App {
+  height: 100vh;
+  color: #fff;
+}
+.App-day {
+  /* background-color: #f2faff; */
+  background: url("./assets/day.jpeg");
+  /* color: #000; */
+}
+.App-night {
+  /* background-color: #005e89; */
+  background: url("./assets/night.jpeg");
+  /* color: #fff; */
 }

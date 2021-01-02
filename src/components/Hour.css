@@ -7,8 +7,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--blue);
+
   color: #fff;
+}
+.Hour-day {
+  background-color: var(--blue);
+}
+.Hour-night {
+  background-color: #5bc6f7;
 }
 .Hour-weather-icon {
   background-color: #fff;

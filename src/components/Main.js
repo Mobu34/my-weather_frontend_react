@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Main.css";
 import Item from "./Item";
 import { connect } from "react-redux";
 import axios from "axios";
+
+import ThemeContext from "../context/ThemeContext";
 
 const Main = ({ favorites, data }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -10,8 +12,9 @@ const Main = ({ favorites, data }) => {
   const [showDetails, setShowDetails] = useState(null);
   const [isCurrentFavorite, setIsCurrentFavorite] = useState(false);
 
+  const theme = useContext(ThemeContext);
+
   useEffect(() => {
-    console.log("useEffect");
     if (favorites.length > 0) {
       (async () => {
         try {
@@ -47,7 +50,7 @@ const Main = ({ favorites, data }) => {
   // console.log("data =", data);
 
   return (
-    <main className="Main">
+    <main className={theme.name === "night" ? "Main-night" : "Main-day"}>
       <Item
         data={data}
         showDetails={showDetails}

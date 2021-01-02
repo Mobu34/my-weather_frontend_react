@@ -9,7 +9,7 @@
   cursor: pointer;
 }
 .Item:hover {
-  background-color: #ffe484;
+  /* background-color: #ffe484; */
   /* opacity: 0.5; */
   transition: 0.5s;
 }
@@ -26,6 +26,8 @@
   left: calc(80% / 2);
   top: 10px;
   overflow: hidden;
+  background-color: #fff;
+  border-radius: 50%;
 }
 .Item-right-container {
   display: flex;
@@ -33,20 +35,32 @@
   align-items: center;
 }
 .Item-favorite-btn {
-  border: #fff 2px solid;
-  background-color: #007db9;
   width: 200px;
   padding: 10px 0;
   border-radius: 30px;
   text-align: center;
-  color: #fff;
   cursor: pointer;
   margin-bottom: 10px;
 }
-.Item-favorite-btn:hover {
+.Item-favorite-btn-day {
+  border: #fff 2px solid;
+  background-color: #007db9;
+  color: #fff;
+}
+.Item-favorite-btn-day:hover {
   background-color: #fff;
+  color: #007db9;
   border: #007db9 2px solid;
-  color: #000;
+  transition: 0.5s;
+}
+.Item-favorite-btn-night {
+  border: #fff 2px solid;
+  /* background-color: #005e89; */
+  color: #fff;
+}
+.Item-favorite-btn-night:hover {
+  background-color: #fff;
+  color: #007db9;
   transition: 0.5s;
 }
 .Item-star-icon {

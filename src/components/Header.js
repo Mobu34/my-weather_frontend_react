@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import ThemeContext from "../context/ThemeContext";
 
 import logo from "../assets/logo.png";
 
@@ -14,6 +16,10 @@ const Header = ({
   const [displayInput, setDisplayInput] = useState(false);
 
   const inputRef = useRef(null);
+
+  const themeContext = useContext(ThemeContext);
+
+  // console.log(theme);
 
   useEffect(() => {
     console.log("useEffect");
@@ -44,7 +50,13 @@ const Header = ({
   return (
     <header className="Header">
       <div className="wrapper">
-        <div className="Header-container">
+        <div
+          className={`Header-container ${
+            themeContext.name === "night"
+              ? "Header-container-night"
+              : "Header-container-day"
+          }`}
+        >
           <div className="Header-logo-container">
             <img className="Header-logo" src={logo} alt="MyWeather logo" />
             <h1>MyWeather</h1>

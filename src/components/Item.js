@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import "./Item.css";
 import moment from "moment";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Moment from "react-moment";
 
+import ThemeContext from "../context/ThemeContext";
+
 import Details from "./Details";
+import Day from "./Day";
 
 const Item = ({
   dispatch,
@@ -18,6 +21,10 @@ const Item = ({
 }) => {
   const hours = Math.floor(data.dt / 60 / 60);
   const minutes = Math.floor(data.dt / 60) - hours * 60;
+
+  console.log(ThemeContext);
+  const theme = useContext(ThemeContext);
+  console.log(theme);
 
   // const [isDetailed, setIsDetailed] = useState(false);
 
@@ -71,7 +78,15 @@ const Item = ({
         />
         <div className="Item-right-container">
           {/* {!location && <div>Add Favorites</div>} */}
-          <div className="Item-favorite-btn" onClick={handleFavorite}>
+          <div
+            className={`Item-favorite-btn ${
+              theme.name === "night"
+                ? "Item-favorite-btn-night"
+                : "Item-favorite-btn-day"
+            }`}
+            onClick={handleFavorite}
+            // style={{ backgroundColor: theme.btnBackgroundColor }}
+          >
             {isFavorite ? "Supprimer des favoris" : "Ajouter en favoris"}
             <FontAwesomeIcon
               icon="star"
