@@ -3,6 +3,7 @@ import "./Main.css";
 import Item from "./Item";
 import { connect } from "react-redux";
 import axios from "axios";
+import uid2 from "uid2";
 
 import ThemeContext from "../context/ThemeContext";
 
@@ -11,8 +12,6 @@ const Main = ({ favorites, data }) => {
   const [favs, setFavs] = useState([]);
   const [showDetails, setShowDetails] = useState(null);
   const [isCurrentFavorite, setIsCurrentFavorite] = useState(false);
-
-  console.log(data);
 
   const theme = useContext(ThemeContext);
 
@@ -27,9 +26,10 @@ const Main = ({ favorites, data }) => {
             }
           );
 
-          console.log("response =", response.data);
-
           if (response.status === 200) {
+            for (let i = 0; i < response.data.cnt; i++) {
+              response.data.list[i].new_id = uid2(16);
+            }
             setFavs(response.data);
             for (let i = 0; i < response.data.list.length; i++) {
               if (response.data.list[i].id === data.id) {
@@ -48,8 +48,6 @@ const Main = ({ favorites, data }) => {
       setIsCurrentFavorite(false);
     }
   }, [favorites]);
-
-  // console.log("data =", data);
 
   return (
     <main className={theme.name === "night" ? "Main-night" : "Main-day"}>
