@@ -16,7 +16,7 @@ const Details = ({ data }) => {
     (async () => {
       try {
         const response = await axios.post(
-          `http://localhost:3001/weather/details`,
+          `https://myweather-backend.herokuapp.com/weather/details`,
           {
             lat: data.coord.lat,
             lon: data.coord.lon,

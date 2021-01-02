@@ -21,7 +21,7 @@ const Main = ({ favorites, data }) => {
       (async () => {
         try {
           const response = await axios.post(
-            `http://localhost:3001/weather/favorites`,
+            `https://myweather-backend.herokuapp.com/weather/favorites`,
             {
               favorites,
             }

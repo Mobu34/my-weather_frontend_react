@@ -14,7 +14,8 @@ import { faSearch, faTimes, faStar } from "@fortawesome/free-solid-svg-icons";
 library.add(faSearch, faTimes, faStar);
 
 const App = () => {
-  const API = "http://localhost:3001";
+  // const API = "http://localhost:3001";
+  const API = "https://myweather-backend.herokuapp.com";
 
   const themeContext = useContext(ThemeContext);
   // console.log(themeContext);
