@@ -13,6 +13,7 @@ moment.locale("fr");
 
 const Item = ({
   dispatch,
+  API,
   data,
   isFavorite,
   setIsSearch,
@@ -22,8 +23,8 @@ const Item = ({
 }) => {
   const theme = useContext(ThemeContext);
 
+  // function that shows the weather details of a city
   const handleClick = () => {
-    // console.log(data.id);
     if (showDetails === data.new_id) {
       setShowDetails(null);
     } else {
@@ -31,6 +32,7 @@ const Item = ({
     }
   };
 
+  // function that puts the city in favorites
   const handleFavorite = (e) => {
     e.stopPropagation();
 
@@ -51,15 +53,6 @@ const Item = ({
     }
   };
 
-  // console.log("showDetails =", showDetails);
-  console.log("showDetails =", showDetails);
-  console.log("id =", data.id);
-
-  // console.log("before =", data.id);
-  // console.log("after =", data.id);
-
-  console.log(data);
-
   moment.locale("fr");
   const time = moment(data.dt + data.timezone).format("LT");
 
@@ -67,12 +60,7 @@ const Item = ({
     <>
       <div className="Item" onClick={handleClick}>
         <div className="Item-left-container">
-          <span className="Item-time">
-            {/* {hours}:{minutes} */}
-            {/* {moment().format("LT")} */}
-            {time}
-            {/* <Moment unix>{data.dt + data.timezone}</Moment> */}
-          </span>
+          <span className="Item-time">{time}</span>
           <h3 className="Item-city">{data.name}</h3>
           <span className="Item-country">{data.sys.country}</span>
         </div>
@@ -106,7 +94,7 @@ const Item = ({
           <span className="Item-temp">{data.main.temp.toFixed(0)}°C</span>
         </div>
       </div>
-      {showDetails === data.new_id && <Details data={data} />}
+      {showDetails === data.new_id && <Details API={API} data={data} />}
     </>
   );
 };

@@ -7,13 +7,12 @@
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  border-bottom: 3px #5bc6f7 solid;
 }
 .Header-container-day {
-  border-bottom: 3px var(--blue) solid;
+  border-bottom: 3px var(--dark-blue) solid;
 }
 .Header-container-night {
-  border-bottom: 3px #5bc6f7 solid;
+  border-bottom: 3px var(--light-blue) solid;
 }
 .Header-logo-container {
   display: flex;
@@ -24,7 +23,6 @@
   margin-right: 10px;
 }
 .Header-form {
-  /* background-color: teal; */
   display: flex;
   align-items: center;
 }
@@ -34,13 +32,11 @@
   height: 30px;
   margin-right: 20px;
   border: none;
-  /* border-bottom: 2px var(--blue) solid; */
   padding: 0 10px;
   font-size: 16px;
 }
 .Header-input-container {
   position: relative;
-  /* background-color: yellow; */
 }
 .Header-input-errormessage {
   position: absolute;

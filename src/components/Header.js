@@ -15,29 +15,27 @@ const Header = ({
 }) => {
   const [displayInput, setDisplayInput] = useState(false);
 
-  const inputRef = useRef(null);
+  const inputRef = useRef(null); // this ref is used to focus on the input when it is displayed
 
   const themeContext = useContext(ThemeContext);
 
-  // console.log(theme);
-
   useEffect(() => {
-    console.log("useEffect");
     if (displayInput) {
-      console.log("if");
       inputRef.current.focus();
     }
   }, [displayInput]);
 
+  // function triggers when we make a search (by pressing enter or click on the search icon)
   const handleSubmit = (e) => {
     if (e) {
       e.preventDefault();
     }
     if (textInput.length > 0) {
-      searchCity(textInput);
+      searchCity(textInput); // state passes to the function (props)
     }
   };
 
+  // function that manages the text input
   const handleChange = (e) => {
     setTextInput(e.target.value);
     if (searchErrorMessage !== "") {
@@ -45,10 +43,13 @@ const Header = ({
     }
   };
 
+  // function that manages the click on the search icon
   const handleClick = () => {
     if (textInput.length > 0 && displayInput) {
+      // if the input is displayed and the text is longer than 0, it submits the search
       handleSubmit();
     } else {
+      // otherwise, it displayed or undisplayed the input
       setDisplayInput(!displayInput);
     }
   };
@@ -84,7 +85,6 @@ const Header = ({
             )}
             <FontAwesomeIcon
               icon="search"
-              // size=
               onClick={handleClick}
               className="Header-search-icon"
             />

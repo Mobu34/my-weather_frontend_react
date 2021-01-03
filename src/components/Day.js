@@ -3,7 +3,6 @@ import "./Day.css";
 import moment from "moment";
 
 const Day = ({ item }) => {
-  console.log(item);
   return (
     <div className="Day">
       <div>{moment(item.dt * 1000).format("dddd")}</div>

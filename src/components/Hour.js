@@ -6,7 +6,6 @@ import ThemeContext from "../context/ThemeContext";
 
 const Hour = ({ item }) => {
   const theme = useContext(ThemeContext);
-  console.log(theme);
 
   return (
     <div
