@@ -30,7 +30,9 @@ const Header = ({
   }, [displayInput]);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     if (textInput.length > 0) {
       searchCity(textInput);
     }
@@ -44,7 +46,11 @@ const Header = ({
   };
 
   const handleClick = () => {
-    setDisplayInput(!displayInput);
+    if (textInput.length > 0 && displayInput) {
+      handleSubmit();
+    } else {
+      setDisplayInput(!displayInput);
+    }
   };
 
   return (
