@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
 import "./Item.css";
 import moment from "moment";
+import "moment/locale/fr";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ThemeContext from "../context/ThemeContext";
 
 import Details from "./Details";
+
+moment.locale("fr");
 
 const Item = ({
   dispatch,
@@ -57,6 +60,9 @@ const Item = ({
 
   console.log(data);
 
+  moment.locale("fr");
+  const time = moment(data.dt + data.timezone).format("LT");
+
   return (
     <>
       <div className="Item" onClick={handleClick}>
@@ -64,7 +70,7 @@ const Item = ({
           <span className="Item-time">
             {/* {hours}:{minutes} */}
             {/* {moment().format("LT")} */}
-            {moment(data.dt + data.timezone).format("LT")}
+            {time}
             {/* <Moment unix>{data.dt + data.timezone}</Moment> */}
           </span>
           <h3 className="Item-city">{data.name}</h3>
