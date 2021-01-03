@@ -53,3 +53,16 @@
   cursor: pointer;
   font-size: 24px;
 }
+
+@media (max-width: 768px) {
+  .Header-logo {
+    height: 40px;
+  }
+  .Header-input {
+    width: 100px;
+    margin-right: 10px;
+  }
+  .Header-search-icon {
+    font-size: 18px;
+  }
+}

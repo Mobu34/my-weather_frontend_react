@@ -83,7 +83,13 @@ const Item = ({
             }`}
             onClick={handleFavorite}
           >
-            {isFavorite ? "Supprimer des favoris" : "Ajouter en favoris"}
+            {isFavorite ? (
+              <span className="Item-favorite-btn-text">
+                Supprimer des favoris
+              </span>
+            ) : (
+              <span className="Item-favorite-btn-text">Ajouter en favoris</span>
+            )}
             <FontAwesomeIcon
               icon="star"
               color={isFavorite ? "#FFCC04" : "#c9c9c9"}

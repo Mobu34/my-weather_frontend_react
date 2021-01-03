@@ -41,6 +41,7 @@
   text-align: center;
   cursor: pointer;
   margin-bottom: 10px;
+  /* font-size: 16px; */
 }
 .Item-favorite-btn-day {
   border: #fff 2px solid;
@@ -69,3 +70,59 @@
 .Item-temp {
   font-size: 30px;
 }
+
+@media (max-width: 768px) {
+  .Item-city {
+    font-size: 16px;
+  }
+  .Item-weather-icon {
+    height: 60px;
+    width: 60px;
+  }
+  .Item-favorite-btn {
+    width: auto;
+    padding: 0;
+  }
+  .Item-favorite-btn-text {
+    display: none;
+  }
+  .Item-favorite-btn-day {
+    border: none;
+    background-color: inherit;
+  }
+  .Item-favorite-btn-day:hover {
+    background-color: inherit;
+    border: none;
+    transition: none;
+  }
+  .Item-favorite-btn-night {
+    border: none;
+  }
+  .Item-favorite-btn-night:hover {
+    background-color: inherit;
+    transition: none;
+  }
+  .Item-temp {
+    font-size: 20px;
+  }
+}
+/* .Item-favorite-btn-day {
+  border: #fff 2px solid;
+  background-color: #007db9;
+  color: #fff;
+}
+.Item-favorite-btn-day:hover {
+  background-color: #fff;
+  color: #007db9;
+  border: #007db9 2px solid;
+  transition: 0.5s;
+}
+.Item-favorite-btn-night {
+  border: #fff 2px solid;
+  color: #fff;
+}
+.Item-favorite-btn-night:hover {
+  background-color: #fff;
+  color: #007db9;
+  transition: 0.5s;
+} */
