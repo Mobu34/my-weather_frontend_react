@@ -13,6 +13,9 @@
   /* opacity: 0.5; */
   transition: 0.5s;
 }
+.Item-left-container {
+  max-width: 300px;
+}
 .Item-time {
   font-size: 12px;
 }
@@ -72,6 +75,9 @@
 }
 
 @media (max-width: 768px) {
+  .Item-left-container {
+    max-width: 100px;
+  }
   .Item-city {
     font-size: 16px;
   }
