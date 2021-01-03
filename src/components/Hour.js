@@ -12,14 +12,14 @@ const Hour = ({ item }) => {
     <div
       className={`Hour ${theme.name === "night" ? "Hour-night" : "Hour-day"}`}
     >
-      <span>{moment(item.dt * 1000).format("LT")}</span>
+      <span className="Hour-text">{moment(item.dt * 1000).format("LT")}</span>
       <img
         className="Hour-weather-icon"
         src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
         alt=""
       />
-      <span>{item.weather[0].description}</span>
-      <span>{item.temp.toFixed(0)}°C</span>
+      <span className="Hour-description">{item.weather[0].description}</span>
+      <span className="Hour-text">{item.temp.toFixed(0)}°C</span>
     </div>
   );
 };

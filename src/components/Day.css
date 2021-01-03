@@ -2,9 +2,15 @@
   padding: 10px;
   /* border: red 1px solid; */
   display: flex;
-  width: 50%;
+  width: 100%;
   /* justify-content: space-between; */
 }
 .Day > div {
   flex: 1;
+}
+
+@media (max-width: 768px) {
+  .Day > div {
+    font-size: 12px;
+  }
 }
