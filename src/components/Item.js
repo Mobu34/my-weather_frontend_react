@@ -55,7 +55,7 @@ const Item = ({
   // console.log("before =", data.id);
   // console.log("after =", data.id);
 
-  // console.log(new Date(data.dt * 1000 + data.timezone));
+  console.log(data);
 
   return (
     <>
@@ -68,6 +68,7 @@ const Item = ({
             {/* <Moment unix>{data.dt + data.timezone}</Moment> */}
           </span>
           <h3 className="Item-city">{data.name}</h3>
+          <span className="Item-country">{data.sys.country}</span>
         </div>
         <img
           className="Item-weather-icon"
