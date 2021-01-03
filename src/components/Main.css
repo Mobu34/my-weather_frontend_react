@@ -1,8 +1,8 @@
 .Main-day > div:not(:last-child) {
-  border-bottom: 1px solid var(--blue);
+  border-bottom: 1px solid var(--dark-blue);
 }
 .Main-night > div:not(:last-child) {
-  border-bottom: 1px solid #5bc6f7;
+  border-bottom: 1px solid var(--light-blue);
 }
 .Main-unknownposition {
   padding: 20px;

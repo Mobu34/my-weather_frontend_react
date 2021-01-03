@@ -7,6 +7,7 @@ import Loader from "react-loader-spinner";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import SearchResult from "./components/SearchResult";
+
 import ThemeContext from "./context/ThemeContext";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -14,35 +15,32 @@ import { faSearch, faTimes, faStar } from "@fortawesome/free-solid-svg-icons";
 library.add(faSearch, faTimes, faStar);
 
 const App = () => {
-  // const API = "http://localhost:3001";
   const API = "https://myweather-backend.herokuapp.com";
 
   const themeContext = useContext(ThemeContext);
-  // console.log(themeContext);
 
   const [isLoading, setIsLoading] = useState(true);
-  const [weatherCurrentPosition, setWeatherCurrentPosition] = useState({});
-  const [weatherSearchCity, setWeatherSearchCity] = useState({});
-  const [isSearch, setIsSearch] = useState(false);
-  const [textInput, setTextInput] = useState("");
-  const [searchErrorMessage, setSearchErrorMessage] = useState("");
-  const [theme, setTheme] = useState({});
+  const [weatherCurrentPosition, setWeatherCurrentPosition] = useState({}); // will get the weather data of the geolocation
+  const [weatherSearchCity, setWeatherSearchCity] = useState({}); // will get the weather data of the search
+  const [isSearch, setIsSearch] = useState(false); // allows to display the SearchResult component when there is a search
+  const [textInput, setTextInput] = useState(""); // will
+  const [searchErrorMessage, setSearchErrorMessage] = useState(""); // will manage the error message when the search is incorrect
+  const [theme, setTheme] = useState({}); // will get the theme (day or night)
 
   useEffect(() => {
-    // console.log("useEffect");
+    // request to get the geolocation
     navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
         if (coords) {
+          // if the request is accepted, a request is sent to the backend to get the weather data
           (async () => {
             try {
-              // console.log("avant req");
               const response = await axios.get(
                 `${API}/weather/currentposition?lat=${coords.latitude}&lon=${coords.longitude}`
               );
 
-              console.log(response.data);
-
               if (response.status === 200) {
+                // if the data sends by the backend is correct
                 setWeatherCurrentPosition(response.data);
                 const currentTimestamp = moment().unix();
 
@@ -50,8 +48,10 @@ const App = () => {
                   currentTimestamp >= response.data.sys.sunrise &&
                   currentTimestamp <= response.data.sys.sunset
                 ) {
+                  // if the current datetime is between the sunrise and the sunset of the weather geolocation, the theme is day (light)
                   setTheme(themeContext.day);
                 } else {
+                  // otherwise, the theme is night (dark)
                   setTheme(themeContext.night);
                 }
                 setIsLoading(false);
@@ -63,12 +63,14 @@ const App = () => {
         }
       },
       () => {
+        // if the request for the geolocation is denied, the theme is automatically set as day
         setTheme(themeContext.day);
         setIsLoading(false);
       }
     );
   }, []);
 
+  // function used to make the city search
   const searchCity = async (city) => {
     try {
       const response = await axios.get(
@@ -84,8 +86,6 @@ const App = () => {
       setSearchErrorMessage("La ville est incorrect");
     }
   };
-
-  // console.log(moment().unix());
 
   return (
     <ThemeContext.Provider value={theme}>
@@ -108,6 +108,7 @@ const App = () => {
         ) : isSearch ? (
           <div className="wrapper">
             <SearchResult
+              API={API}
               data={weatherSearchCity}
               setIsSearch={setIsSearch}
               setTextInput={setTextInput}
@@ -115,7 +116,7 @@ const App = () => {
           </div>
         ) : (
           <div className="wrapper">
-            <Main data={weatherCurrentPosition} />
+            <Main API={API} data={weatherCurrentPosition} />
           </div>
         )}
       </div>

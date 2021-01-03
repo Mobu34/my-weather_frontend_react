@@ -5,25 +5,18 @@ import axios from "axios";
 import Hour from "./Hour";
 import Day from "./Day";
 
-const Details = ({ data }) => {
+const Details = ({ API, data }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [hours, setHours] = useState([]);
-  const [days, setDays] = useState([]);
-
-  // console.log(data);
+  const [hours, setHours] = useState([]); // will get the weather details by hours
+  const [days, setDays] = useState([]); // will get the weather details by days
 
   useEffect(() => {
     (async () => {
       try {
-        const response = await axios.post(
-          `https://myweather-backend.herokuapp.com/weather/details`,
-          {
-            lat: data.coord.lat,
-            lon: data.coord.lon,
-          }
-        );
-
-        console.log(response.data);
+        const response = await axios.post(`${API}/weather/details`, {
+          lat: data.coord.lat,
+          lon: data.coord.lon,
+        });
 
         if (response.status === 200) {
           setHours(response.data.hourly);
@@ -35,8 +28,6 @@ const Details = ({ data }) => {
       }
     })();
   }, [data.id]);
-
-  // console.log(hours);
 
   return (
     <div className="Details">

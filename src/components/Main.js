@@ -7,7 +7,7 @@ import uid2 from "uid2";
 
 import ThemeContext from "../context/ThemeContext";
 
-const Main = ({ favorites, data }) => {
+const Main = ({ favorites, API, data }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [favs, setFavs] = useState([]);
   const [showDetails, setShowDetails] = useState(null);
@@ -17,21 +17,19 @@ const Main = ({ favorites, data }) => {
 
   useEffect(() => {
     if (favorites.length > 0) {
+      // if there are some favorites, a request is triggers to get weather data for all cities in favs
       (async () => {
         try {
-          const response = await axios.post(
-            `https://myweather-backend.herokuapp.com/weather/favorites`,
-            {
-              favorites,
-            }
-          );
+          const response = await axios.post(`${API}/weather/favorites`, {
+            favorites,
+          });
 
           if (response.status === 200) {
             for (let i = 0; i < response.data.cnt; i++) {
-              response.data.list[i].new_id = uid2(16);
+              response.data.list[i].new_id = uid2(16); // here we create a unique id as a workaround when we set the current location as favs and show the details
             }
             setFavs(response.data);
-            for (let i = 0; i < response.data.list.length; i++) {
+            for (let i = 0; i < response.data.cnt; i++) {
               if (response.data.list[i].id === data.id) {
                 setIsCurrentFavorite(true);
               } else if (isCurrentFavorite) {
@@ -53,6 +51,7 @@ const Main = ({ favorites, data }) => {
     <main className={theme.name === "night" ? "Main-night" : "Main-day"}>
       {data.dt ? (
         <Item
+          API={API}
           data={data}
           showDetails={showDetails}
           setShowDetails={setShowDetails}
@@ -72,6 +71,7 @@ const Main = ({ favorites, data }) => {
           favs.list.map((item) => {
             return (
               <Item
+                API={API}
                 key={item.id}
                 data={item}
                 isFavorite={true}

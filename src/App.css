@@ -3,14 +3,15 @@
 
 /* COLORS */
 :root {
-  --blue: #007db9;
+  --dark-blue: #005e89;
+  --light-blue: #5bc6f7;
+  --yellow: #ffcc04;
+  --grey: #c9c9c9;
 }
 
 /* GLOBAL */
 body {
   font-family: "Ubuntu", sans-serif;
-  /* background-color: #f2faff; */
-  /* height: 100%; */
 }
 .wrapper {
   max-width: 1200px;
@@ -27,11 +28,6 @@ h1 {
   justify-content: center;
   align-items: center;
 }
-@media (max-width: 768px) {
-  h1 {
-    font-size: 30px;
-  }
-}
 
 /* APP */
 .App {
@@ -40,12 +36,15 @@ h1 {
   color: #fff;
 }
 .App-day {
-  /* background-color: #f2faff; */
   background: url("./assets/day.jpeg");
-  /* color: #000; */
 }
 .App-night {
-  /* background-color: #005e89; */
   background: url("./assets/night.jpeg");
-  /* color: #fff; */
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 30px;
+  }
 }

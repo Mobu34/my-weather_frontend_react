@@ -10,10 +10,10 @@
   color: #fff;
 }
 .Hour-day {
-  background-color: var(--blue);
+  background-color: var(--dark-blue);
 }
 .Hour-night {
-  background-color: #5bc6f7;
+  background-color: var(--light-blue);
 }
 .Hour-weather-icon {
   background-color: #fff;

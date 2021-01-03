@@ -1,9 +1,7 @@
 .Day {
   padding: 10px;
-  /* border: red 1px solid; */
   display: flex;
   width: 100%;
-  /* justify-content: space-between; */
 }
 .Day > div {
   flex: 1;
