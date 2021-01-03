@@ -65,7 +65,9 @@ const Main = ({ favorites, data }) => {
       )}
       {favorites.length > 0 &&
         (isLoading ? (
-          <span>Chargement en cours ...</span>
+          <div className="Main-favorites-loader">
+            Chargement des favoris en cours ...
+          </div>
         ) : (
           favs.list.map((item) => {
             return (
