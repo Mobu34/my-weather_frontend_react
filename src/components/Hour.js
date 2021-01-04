@@ -14,7 +14,7 @@ const Hour = ({ item }) => {
       <span className="Hour-text">{moment(item.dt * 1000).format("LT")}</span>
       <img
         className="Hour-weather-icon"
-        src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
+        src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
         alt=""
       />
       <span className="Hour-description">{item.weather[0].description}</span>
