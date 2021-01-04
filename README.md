@@ -7,7 +7,7 @@
 <br/>
 <h1>My Weather (Front : React.js / Back : Node.js)</h1>
 <br/>
-<p>Weather website. 
+<p>Weather fullstack project based on the <a href="https://openweathermap.org/api">OpenWeatherMap API</a>. 
 You can find the Backend code<a href="https://github.com/Mobu34/my-weather_backend"> here</a>.</p>
 
 <h3>
@@ -18,8 +18,15 @@ You can find the <a href="https://myweather-byluc.netlify.app">Live Demo here !<
 <br/>
 <br/>
 <p align="center">
-<a href="https://tellmemore-by-lucas.netlify.app">
+<h4>Design on PC :</h4>
+<a href="https://myweather-byluc.netlify.app">
   <img src="./src/assets/screen.png" alt ="TellMeMore homepage"  />
+  </a>
+  <br/>
+  <br/>
+  <h4>Design on smartphone :</h4>
+<a href="https://myweather-byluc.netlify.app">
+  <img src="./src/assets/screen_mobile.jpg" alt ="TellMeMore homepage" style="width: 40%"  />
   </a>
 </p>
 <br/>
@@ -32,6 +39,8 @@ You can find the <a href="https://myweather-byluc.netlify.app">Live Demo here !<
   <li>Weather details (24 next hours, 7 next days)</li>
   
   <li>Day & Night theme</li>
+
+  <li>App responsive</li>
  
   </ul>
 
