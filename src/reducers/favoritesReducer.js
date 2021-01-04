@@ -12,7 +12,6 @@ const manageFavorites = (state = initialState, action) => {
 
     case "DELETE": // case triggers to remove the city from favs
       for (let i = 0; i < state.favorites.length; i++) {
-        console.log(state.favorites[i]);
         if (state.favorites[i] === action.value) {
           state.favorites.splice(i, 1);
           nextState = {
