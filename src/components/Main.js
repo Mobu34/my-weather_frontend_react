@@ -45,7 +45,7 @@ const Main = ({ favorites, API, data }) => {
     } else if (isCurrentFavorite) {
       setIsCurrentFavorite(false);
     }
-  }, [API, data.id, favorites, isCurrentFavorite]);
+  }, [API, data.id, favorites]);
 
   return (
     <main className={theme.name === "night" ? "Main-night" : "Main-day"}>
