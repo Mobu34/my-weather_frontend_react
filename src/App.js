@@ -68,7 +68,7 @@ const App = () => {
         setIsLoading(false);
       }
     );
-  }, []);
+  }, [themeContext.day, themeContext.night]);
 
   // function used to make the city search
   const searchCity = async (city) => {

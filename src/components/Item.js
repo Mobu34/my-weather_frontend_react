@@ -66,7 +66,7 @@ const Item = ({
         </div>
         <img
           className="Item-weather-icon"
-          src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+          src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
           alt=""
         />
         <div className="Item-right-container">

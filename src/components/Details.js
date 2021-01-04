@@ -27,7 +27,7 @@ const Details = ({ API, data }) => {
         console.log(err);
       }
     })();
-  }, [data.id]);
+  }, [API, data.coord.lat, data.coord.lon]);
 
   return (
     <div className="Details">
@@ -40,6 +40,7 @@ const Details = ({ API, data }) => {
               if (index < 24) {
                 return <Hour key={item.dt} item={item} />;
               }
+              return <></>;
             })}
           </div>
           <div className="Details-days-container">
@@ -47,6 +48,7 @@ const Details = ({ API, data }) => {
               if (index < 7) {
                 return <Day key={item.dt} item={item} />;
               }
+              return <></>;
             })}
           </div>
         </>
