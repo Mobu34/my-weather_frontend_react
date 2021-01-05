@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import moment from "moment";
@@ -16,8 +16,6 @@ library.add(faSearch, faTimes, faStar);
 
 const App = () => {
   const API = "https://myweather-backend.herokuapp.com";
-
-  const themeContext = useContext(ThemeContext);
 
   const [isLoading, setIsLoading] = useState(true);
   const [weatherCurrentPosition, setWeatherCurrentPosition] = useState({}); // will get the weather data of the geolocation
@@ -49,10 +47,10 @@ const App = () => {
                   currentTimestamp <= response.data.sys.sunset
                 ) {
                   // if the current datetime is between the sunrise and the sunset of the weather geolocation, the theme is day (light)
-                  setTheme(themeContext.day);
+                  setTheme("day");
                 } else {
                   // otherwise, the theme is night (dark)
-                  setTheme(themeContext.night);
+                  setTheme("night");
                 }
                 setIsLoading(false);
               }
@@ -64,11 +62,11 @@ const App = () => {
       },
       () => {
         // if the request for the geolocation is denied, the theme is automatically set as day
-        setTheme(themeContext.day);
+        setTheme("day");
         setIsLoading(false);
       }
     );
-  }, [themeContext.day, themeContext.night]);
+  }, []);
 
   // function used to make the city search
   const searchCity = async (city) => {
@@ -89,10 +87,8 @@ const App = () => {
 
   return (
     <ThemeContext.Provider value={theme}>
-      <div
-        className={`App ${theme.name === "night" ? "App-night" : "App-day"}`}
-      >
-        {theme.name && (
+      <div className={`App ${theme === "night" ? "App-night" : "App-day"}`}>
+        {theme && (
           <Header
             textInput={textInput}
             setTextInput={setTextInput}
