@@ -8,9 +8,7 @@ const Hour = ({ item }) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <div
-      className={`Hour ${theme.name === "night" ? "Hour-night" : "Hour-day"}`}
-    >
+    <div className={`Hour ${theme === "night" ? "Hour-night" : "Hour-day"}`}>
       <span className="Hour-text">{moment(item.dt * 1000).format("LT")}</span>
       <img
         className="Hour-weather-icon"

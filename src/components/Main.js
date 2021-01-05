@@ -48,7 +48,7 @@ const Main = ({ favorites, API, data }) => {
   }, [API, data.id, favorites]);
 
   return (
-    <main className={theme.name === "night" ? "Main-night" : "Main-day"}>
+    <main className={theme === "night" ? "Main-night" : "Main-day"}>
       {data.dt ? (
         <Item
           API={API}

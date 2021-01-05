@@ -72,7 +72,7 @@ const Item = ({
         <div className="Item-right-container">
           <div
             className={`Item-favorite-btn ${
-              theme.name === "night"
+              theme === "night"
                 ? "Item-favorite-btn-night"
                 : "Item-favorite-btn-day"
             }`}

@@ -59,7 +59,7 @@ const Header = ({
       <div className="wrapper">
         <div
           className={`Header-container ${
-            themeContext.name === "night"
+            themeContext === "night"
               ? "Header-container-night"
               : "Header-container-day"
           }`}
